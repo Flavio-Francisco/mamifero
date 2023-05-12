@@ -3,6 +3,10 @@ import z from 'zod';
 
 const server = Fastify();
 
+server.get('/get', async () =>{
+  
+    return('rota ok')
+})
 
 
 
