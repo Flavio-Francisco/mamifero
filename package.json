@@ -5,7 +5,8 @@
   "main": "./server/server.ts",
   "scripts": {
     "build":"tsc -p tsconfig.json",
-    "start": "node ./dist/server.js"
+    "start": "node ./dist/server.js",
+    "dev":"npx tsx watch ./server/server.ts"
   },
   "repository": {
     "type": "git",

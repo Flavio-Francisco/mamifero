@@ -11,6 +11,6 @@ server.listen({ port: 3000 }, async (erro, address) => {
         process.exit(1);
     }
     else {
-        console.log("sevidor rodando" + address);
+        console.log("sevidor rodando:" + address);
     }
 });
