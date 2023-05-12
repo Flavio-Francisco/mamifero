@@ -6,6 +6,13 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = env("DATABASE_URL1")
+}
+
+model Mamifero{
+id String  @id @default(cuid())
+name String
+race String
+paws Int
 }

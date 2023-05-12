@@ -1,4 +1,5 @@
 import Fastify from 'fastify';
+import { Create } from './Create';
 
 
 const server = Fastify();
@@ -7,10 +8,10 @@ server.get('/get', async () =>{
   
     return('rota ok')
 })
+  server.register(Create);
 
 
-
-server.listen({port:3000}, async (erro, address)=>{
+server.listen({port:3000},  (erro, address)=>{
     if (erro) {
         server.log.error(erro)
         process.exit(1)
