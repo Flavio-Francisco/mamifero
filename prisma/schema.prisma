@@ -10,9 +10,10 @@ datasource db {
   url      = env("DATABASE_URL1")
 }
 
-model Mamifero{
+model Golfinho{
 id String  @id @default(cuid())
 name String
-race String
-paws Int
+species String
+characteristics String
+marine Boolean
 }
