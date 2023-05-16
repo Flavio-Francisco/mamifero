@@ -11,8 +11,8 @@ generator client {
 }
 
 model Golfinho{
-id String  @id @default(cuid())
-name String
+id String   @id @default(cuid())
+name String @unique
 species String
 characteristics String
 marine Boolean
