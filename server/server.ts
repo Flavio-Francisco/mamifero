@@ -1,19 +1,23 @@
 import Fastify from 'fastify';
-import cors from '@fastify/cors';
-import { z } from 'zod';
-import {PrismaClient}from '@prisma/client';
 import Get from './Get';
-import Post from './Post';
+import Update from './Update';
+import Delete from './Delete';
+import Create from './Create';
 
-async  function Server() {
-  const prisma = new PrismaClient();
+async function Server() {
+
   const server = Fastify();
 
 
-server.register(Get)
-server.register(Post)
+  await server.register(Create)
+  await server.register(Get)
+  await server.register(Update)
+  await server.register(Delete)
 
-    server.listen({port:5432}, (erro, address)=>{
+
+ 
+
+   server.listen({port:5432}, (erro, address)=>{
 
     if (erro) {
         server.log.error(erro)
