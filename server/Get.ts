@@ -7,6 +7,7 @@ export default async function Get(server:FastifyInstance) {
   
         const Golfinho = await prisma.golfinho.findMany({
            select:{
+             id:true,
              name:true,
              species:true,
              characteristics: true,
