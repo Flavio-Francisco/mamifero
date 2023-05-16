@@ -8,14 +8,10 @@ async function Server() {
 
   const server = Fastify();
 
-
   await server.register(Create)
   await server.register(Get)
   await server.register(Update)
   await server.register(Delete)
-
-
- 
 
    server.listen({port:5432}, (erro, address)=>{
 
