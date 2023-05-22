@@ -8,8 +8,8 @@ export default async function Create(server:FastifyInstance) {
     server.post('/post',async(request,reply)=>{
         const type = z.object({
             name: z.string(),
-            species: z.string(),
-            characteristics: z.string(),
+            species: z.string().max(30),
+            characteristics: z.string().min(20).max(200),
             marine: z.boolean(),
           })
           const Golfinho = type.parse(request.body);

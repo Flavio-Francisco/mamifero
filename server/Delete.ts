@@ -18,7 +18,7 @@ const prisma = new PrismaClient();
             id: Golfinho.id
         }
         })
-        reply.status(200).send("deletado com  sucesso")
+        reply.status(200).send(` Golfinho com ID, ${deleteGolfinho} deletado com  sucesso`)
     })
 
 }
