@@ -14,11 +14,16 @@ export default async function Query(server: FastifyInstance) {
         
         type type =z.infer< typeof type >;
 
-        const namrGolfinho = type.parse(request.body);
+        const nameGolfinho = type.parse(request.body);
 
-        const golfinho = await prisma.golfinho.findUnique({
+        const golfinho = await prisma.golfinho.findMany({
             where:{
-                name: namrGolfinho.name,
+             AND:{
+                name:{
+                    contains:nameGolfinho.name,
+     
+                }
+             }
             },
             select:{
                 id: true,
