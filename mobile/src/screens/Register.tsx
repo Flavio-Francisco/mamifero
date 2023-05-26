@@ -12,7 +12,7 @@ function openScreens(){
 
     return(
         <View style={style.hearder}>
-            <Text>por tudo!!!!</Text>
+            <Text>por  tudo!!!!</Text>
             <Button
         title="voltar para Home"
         onPress={openScreens}
