@@ -1,5 +1,4 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Home } from './Home';
 import { Register } from './Register';
 import { Query } from './Query';
 import { Delete } from './Delete';
