@@ -7,7 +7,9 @@ export function Home(){
     return(
        
     
-    <View/>
+    <View>
+        <Text>HOME</Text>
+    </View>
 
     );
 }
