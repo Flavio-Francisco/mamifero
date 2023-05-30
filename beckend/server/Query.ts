@@ -1,12 +1,12 @@
 import { FastifyInstance } from "fastify";
 import { TypeOf, z } from "zod";
 import { PrismaClient } from '@prisma/client';
-import async from './Query';
+
 
 
 export default async function Query(server: FastifyInstance) {
     const prisma = new PrismaClient();
-    server.post('/query',async (request, reply ) => {
+    server.get('/query',async (request, reply ) => {
 
         const type = z.object({
             name: z.string(),
