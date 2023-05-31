@@ -6,13 +6,8 @@ import { InputBusca } from './../component/InputBusca';
             Query:undefined;
             Register:undefined;
             Root:undefined;
-            InputBusca:{
-                golfinho:{
-                    id:string;
-                    name:string;
-                    
-                }
-            }
+            InputBusca:undefined;
+            
 
          }
     }

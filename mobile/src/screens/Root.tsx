@@ -13,7 +13,7 @@ export function TabsRoutes() {
   return (
     <Tab.Navigator
     screenOptions={{
-       headerShown :false,
+     title:'Lista de Golfinhos',
        tabBarShowLabel :false,
     }}
     >

@@ -4,6 +4,7 @@ import Update from './Update';
 import Delete from './Delete';
 import Create from './Create';
 import Query from './Query';
+import Get from './Get';
 
 
 
@@ -23,6 +24,7 @@ async function Server() {
   await server.register(Update)
   await server.register(Delete)
   await server.register(Query)
+  await server.register(Get)
 
 
 
@@ -35,8 +37,7 @@ async function Server() {
         console.log("sevidor rodando: " + address)
       } 
 
-  
-      
+
 })
 }
 
