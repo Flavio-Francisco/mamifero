@@ -17,7 +17,7 @@ export default async function Update(server:FastifyInstance) {
 
           const updateGolfinho = await prisma.golfinho.update({
             where:{
-                id:'clhqfzbue0000i3gouljjegtf',
+               name:Golfinho.name
             },
             data:{
                  name: Golfinho.name,

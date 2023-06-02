@@ -6,7 +6,7 @@ import { PrismaClient } from '@prisma/client';
 
 export default async function Query(server: FastifyInstance) {
     const prisma = new PrismaClient();
-    server.get('/query',async (request ) => {
+    server.post('/query',async (request,reply ) => {
 
         const type = z.object({
             name: z.string(),
@@ -33,7 +33,7 @@ export default async function Query(server: FastifyInstance) {
             }
         })
 
-       return {golfinho}
+       return reply.send(golfinho)
         })
     
 }

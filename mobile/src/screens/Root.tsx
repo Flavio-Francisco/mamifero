@@ -3,6 +3,7 @@ import { Register } from './Register';
 import { Query } from './Query';
 import { Delete } from './Delete';
 import { Ionicons } from '@expo/vector-icons';
+import { QueryInd } from './QueryIndividual';
 
 
 
@@ -24,6 +25,14 @@ export function TabsRoutes() {
                   
            }}
         name="Query" component={Query} 
+       />
+      
+      <Tab.Screen
+        options={{
+            tabBarIcon:()=><Ionicons name={'search-sharp'} size={25} />
+        }}
+          
+        name="Home4" component={QueryInd} 
        />
 
      <Tab.Screen

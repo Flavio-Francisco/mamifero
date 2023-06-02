@@ -7,20 +7,34 @@ import { Card } from "../componets/Card";
 
 
 
-
 export function Query(){
-
+;
   var [name, setName] = useState<TypeGolfinho[]>([])
-
   async function queryGolfinho() {
+  
     
-    const result =  await api.get('/get');
-    setName(result.data);
-
-    console.log(result.data);
-    
+    try {
+         
+         await api.post('/query',{name})
+         .then(response => {
+           console.log(response.data);  
+         setName(response.data);
+        
+         
+         })
+         .catch(error => {
+         console.log(error);
+         });
+         } catch (error) {
+     console.log(error);
+     Alert.alert('algo deu Errado!')
+     useEffect(()=>{
+         queryGolfinho();
+     },[])
+     
+    }  
+   }
  
-  }
 
     return(
         <View style={style.conatiner}>

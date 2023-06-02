@@ -18,6 +18,7 @@ return(
     <View style={style.conteiner}>
         <Text style={style.text}>Nome: {item.name}</Text>
         <Text style={style.text}>Características: {item.characteristics}</Text>
+        <Text style={style.text}>espécie: {item.species}</Text>
         <Text style={style.text}>Habitat: {marine}</Text>
     </View>
 )

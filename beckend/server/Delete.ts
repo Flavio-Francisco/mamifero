@@ -5,10 +5,10 @@ import { z } from "zod";
 export default async function(server:FastifyInstance){
 const prisma = new PrismaClient();
 
-    server.delete('/delete',async (request,reply) =>{
+    server.delete('/delete',async (request) =>{
 
         const type = z.object({
-            id : z.string(),
+        
             name: z.string(),
         })
 
@@ -17,9 +17,16 @@ const prisma = new PrismaClient();
         const deleteGolfinho = await prisma.golfinho.delete({
         where: {
            name:Golfinho.name,
+        },
+        select:{
+            id: true,
+            name: true,
+            characteristics: true,
+            species: true,
+            marine: true
         }
         })
-        reply.status(200).send(` Golfinho com ID, ${deleteGolfinho} deletado com  sucesso`)
+        return(` Golfinho com ID, ${deleteGolfinho} deletado com  sucesso`)
     })
 
 }
