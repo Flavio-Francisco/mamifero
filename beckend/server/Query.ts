@@ -6,7 +6,7 @@ import { PrismaClient } from '@prisma/client';
 
 export default async function Query(server: FastifyInstance) {
     const prisma = new PrismaClient();
-    server.post('/query',async (request,reply ) => {
+    server.get('/query/:name',async (request,reply) => {
 
         const type = z.object({
             name: z.string(),
@@ -14,7 +14,7 @@ export default async function Query(server: FastifyInstance) {
         
         type type =z.infer<typeof type>;
 
-        const nameGolfinho = type.parse(request.body);
+        const nameGolfinho = type.parse(request.params);
 
         const golfinho = await prisma.golfinho.findMany({
             where:{
@@ -33,7 +33,7 @@ export default async function Query(server: FastifyInstance) {
             }
         })
 
-       return reply.send(golfinho)
+       return reply.send (golfinho)
         })
     
 }

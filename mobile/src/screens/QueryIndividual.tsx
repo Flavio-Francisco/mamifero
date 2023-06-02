@@ -14,29 +14,33 @@ export function   QueryInd(){
     var [name, setName] = useState<TypeGolfinho[]>([] as TypeGolfinho[])
     var[data, setData] = useState('')
     
-  async function queryGolfinho() {
-  
-   try {      
-        console.log(data); 
-        await api.post('/query',{data})
-        .then(response => {
-          console.log(response.data);  
-        setName(response.data);
-         console.log(response.data);
-        
-        })
-        .catch(error => {
-        console.log(error);
-        });
-        } catch (error) {
-    console.log(error);
-    Alert.alert('algo deu Errado!')
-    useEffect(()=>{
-        queryGolfinho();
-    },[])
+
+   
+    async function queryGolfinho() {
+        console.log(data);
+       await api.get('/query/',{
+          params:{
+              name:data
+          }
+      })
+      .then((response)=>{
+          console.log(response.data);
+          setName(response.data)
+          
+      })
+      .catch((erro)=>{
+        console.log(erro);
+        Alert.alert('algo deu errado!')
+
+      })
+        useEffect(()=>{
     
-   }  
-  }
+      queryGolfinho()
+      Card
+     } ,[])  
+     
+   }
+  
    
 
 return(

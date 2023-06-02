@@ -1,12 +1,30 @@
 import{View,Text, TouchableOpacity,StyleSheet, TextInput}from 'react-native';
 import { useState } from 'react';
+import { api } from '../services/axios';
 
 export function Register(){
     const[name, setName]=useState('');
     const[especie, setEspecie]=useState('');
     const[caracteristica, setCaracteristica]=useState('');
-    const[Habitat,setHabitat]=useState(0);
+    const[habitat,setHabitat]=useState('');
     
+       async function createGolfinho() {
+        var local: boolean = true ? habitat == "marinho" : local = false
+        console.log(name);
+        console.log(especie);
+        console.log(caracteristica);
+        console.log(local);
+        
+       const result =  await api.post('/post',{
+           name: name,
+           species: especie,
+           characteristics: caracteristica,
+           marine: local
+        })
+        console.log(result.data)
+
+       }      
+
     
 
     return(
@@ -14,21 +32,31 @@ export function Register(){
             <TextInput
             style={style.textInput}
             placeholder='Digite o nome'
+            value={name}
+            onChangeText={setName}
             />
             <TextInput
             style={style.textInput}
             placeholder='Digite a espécie'
+            value={especie}
+            onChangeText={setEspecie}
             />
             <TextInput
             style={style.textInput}
             placeholder='Digite as caracteristicas '
+            value={caracteristica}
+            onChangeText={setCaracteristica}
+
             />
             <TextInput
             style={style.textInput}
             placeholder='Digite o habitat'
+            value={habitat}
+            onChangeText={setHabitat}
             />
               <TouchableOpacity
             style={style.button}
+            onPress={createGolfinho}
           
             ><Text style={style.text}>Criar</Text></TouchableOpacity>
         </View>
