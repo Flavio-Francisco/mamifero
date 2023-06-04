@@ -34,8 +34,15 @@ export default async function Query(server: FastifyInstance) {
                 marine: true,
             }
         })
-
+      
+        console.log('====================================');
+        console.log(golfinho);
+        console.log('====================================');
        return reply.send (golfinho)
+       
         })
+       
+
+        
     
 }

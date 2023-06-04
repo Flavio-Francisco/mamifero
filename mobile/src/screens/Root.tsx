@@ -5,6 +5,8 @@ import { Delete } from './Delete';
 import { Ionicons } from '@expo/vector-icons';
 import { QueryInd } from './QueryIndividual';
 
+import { UpdateQuery } from './UpdateQuery';
+
 
 
 
@@ -12,16 +14,16 @@ const Tab = createBottomTabNavigator();
 
 export function TabsRoutes() {
   return (
-    <Tab.Navigator
-    screenOptions={{
-     title:'Lista de Golfinhos',
-       tabBarShowLabel :false,
-    }}
-    >
+    <Tab.Navigator>
+
       <Tab.Screen
         options={{
-            
-            tabBarIcon:()=> <Ionicons name={'search-outline'} size={25}  />
+          title:'Golfinhos Cadastrados',
+          headerTitleAlign:'center',
+          headerStyle:{
+            backgroundColor:'#13293D'
+          },
+            tabBarIcon:()=> <Ionicons name={'list-outline'} size={25}  />
                   
            }}
         name="Query" component={Query} 
@@ -29,6 +31,12 @@ export function TabsRoutes() {
       
       <Tab.Screen
         options={{
+          title:'Pesquisar',
+          headerTitleAlign:'center',
+          headerStyle:{
+            backgroundColor:'#13293D'
+          },
+         
             tabBarIcon:()=><Ionicons name={'search-sharp'} size={25} />
         }}
           
@@ -37,15 +45,40 @@ export function TabsRoutes() {
 
      <Tab.Screen
         options={{
+          title:'Cadastra Novo Golfinho',
+          headerTitleAlign:'center',
+          headerStyle:{
+            backgroundColor:'#13293D'
+          },
+        
             tabBarIcon:()=><Ionicons name={'add-outline'} size={25} />
         }}
           
         name="Home1" component={Register} 
        />
 
-      
+        <Tab.Screen
+        options={{
+            title:'Editar Registro',
+            headerTitleAlign:'center',
+            headerStyle:{
+              backgroundColor:'#13293D'
+            },
+           
+            tabBarIcon:()=><Ionicons name={'create-outline'} size={25} />
+        }}
+          
+        name="Update" component={UpdateQuery} 
+       />
+
        <Tab.Screen
         options={{
+          title:'Apagar Registro',
+          headerTitleAlign:'center',
+          headerStyle:{
+            backgroundColor:'#13293D'
+          },
+           
             tabBarIcon:()=><Ionicons name={'ios-trash-outline'} size={25}/>
         }}
 

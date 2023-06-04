@@ -1,25 +1,35 @@
 import{View,Text, TouchableOpacity,StyleSheet, TextInput}from 'react-native';
 import { useState } from 'react';
 import { api } from '../services/axios';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
+import { RootType } from '../services/RootType';
 
-export function Register(){
+export function Update(){
     const[name, setName]=useState('');
     const[especie, setEspecie]=useState('');
     const[caracteristica, setCaracteristica]=useState('');
     const[habitat,setHabitat]=useState('');
     
-       async function createGolfinho() {
+       async function UpdateGolfinho() {
         var local: boolean = true ? habitat == "marinho" : local = false
         console.log(name);
         console.log(especie);
         console.log(caracteristica);
         console.log(local);
-        
-       const result =  await api.post('/post',{
-           name: name,
-           species: especie,
-           characteristics: caracteristica,
-           marine: local
+
+        type HomeSreenProp = NativeStackNavigationProp<RootType,'UpdateQuery'>
+
+        const navigation = useNavigation<HomeSreenProp>()
+
+        const pushNavegation = navigation.push('UpdateQuery',{name})
+
+       const result =  await api.put(`/update/${pushNavegation}`,
+       {
+        name: name,
+        species: especie,
+        characteristics: caracteristica,
+        marine: local
         })
         console.log(result.data)
 
@@ -56,19 +66,21 @@ export function Register(){
             />
               <TouchableOpacity
             style={style.button}
-            onPress={createGolfinho}
+            onPress={UpdateGolfinho}
           
-            ><Text style={style.text}>Criar</Text></TouchableOpacity>
+            ><Text style={style.text}>Atulalizar</Text></TouchableOpacity>
         </View>
     );
 }
 const style = StyleSheet.create({
-    conatiner:{
-
+      conatiner:{
+        backgroundColor:'#13293D',
         height:"100%",
+        marginTop:"20%",
         flex:1,
         alignItems:'center',
-        backgroundColor:'#13293D',
+        justifyContent:"space-around"
+        
        
     },
     button:{
@@ -76,7 +88,6 @@ const style = StyleSheet.create({
         padding:20,
         borderRadius:10,
         width:'50%',
-        marginTop:15
     },
     text:{
         textAlign:'center',
@@ -84,15 +95,12 @@ const style = StyleSheet.create({
 
     },
     textInput:{
-        backgroundColor:'#E8F1F2',
+        backgroundColor:'#e8F1F2',
         padding:20,
-        marginBottom:20,
-        marginTop:20,
+        marginBottom:35,
         borderRadius:10,
         width:'90%',
-        borderEndColor:'white',
-        fontSize:20,
-        
+        fontSize:20
+       
     }
-
-    })
+})

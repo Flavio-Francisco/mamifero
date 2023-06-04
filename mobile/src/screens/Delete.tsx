@@ -34,6 +34,7 @@ export function Delete(){
 return(
     <View style={style.conatiner}>
         <TextInput
+         style={style.textInput}
         placeholder="Qual o golfinho você vai apagar?"
         value={named}
         onChangeText={setName}
@@ -49,17 +50,27 @@ return(
 
 const style = StyleSheet.create({
     conatiner:{
+        backgroundColor:'#13293D',
         height:"100%",
         flex:1,
         alignItems:'center',
-        justifyContent:'space-between',
+        justifyContent:'center',
         
        
     },
-    button:{
-        backgroundColor:'#9999',
+    textInput:{
+        backgroundColor:'#E8F1F2',
         padding:20,
-        marginBottom:150,
+        marginBottom:50,
+        borderRadius:10,
+        fontSize:20,
+        width:'90%',
+        
+    },
+    button:{
+        marginTop:150,
+        backgroundColor:'#006496',
+        padding:20,
         borderRadius:10,
         width:'50%',
     },

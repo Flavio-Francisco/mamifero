@@ -16,6 +16,7 @@ if (item.marine === true) {
 
 return(
     <View style={style.conteiner}>
+        
         <Text style={style.text}>Nome: {item.name}</Text>
         <Text style={style.text}>Características: {item.characteristics}</Text>
         <Text style={style.text}>espécie: {item.species}</Text>
@@ -27,15 +28,18 @@ return(
 const style= StyleSheet.create({
     conteiner:{
         margin:5,
+        marginTop:25,
         flex:1,
-        backgroundColor:'#2244',
+        backgroundColor:'#E8F1F2',
         borderLeftWidth:10,
         borderRadius:10,
         padding:10,
         
     },
     text:{
-        fontSize:14,
+        borderRadius:10,
+        backgroundColor:'#E8F1F2',
+        fontSize:20,
         color:'black'
 
     }

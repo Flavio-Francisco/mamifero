@@ -1,5 +1,6 @@
 export declare global{
-import { InputBusca } from './../component/InputBusca';
+
+
     namespace ReactNavigation{
         interface RootParamList{
             Home:undefined;
@@ -7,7 +8,8 @@ import { InputBusca } from './../component/InputBusca';
             Register:undefined;
             Root:undefined;
             InputBusca:undefined;
-            
+            Update:undefined
+            UpdateQuery:undefined
 
          }
     }

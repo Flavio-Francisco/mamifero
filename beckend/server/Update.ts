@@ -5,7 +5,7 @@ import { z } from "zod";
 export default async function Update(server:FastifyInstance) {
     const prisma = new PrismaClient();
 
-    server.put('/update', async (request,reply) =>{
+    server.put('/update/:name', async (request,reply) =>{
         
         const type = z.object({
             name : z.string(),
@@ -13,11 +13,19 @@ export default async function Update(server:FastifyInstance) {
             characteristics : z.string(),
             marine : z.boolean(),
           })
+          const typeName= z.object({name: z.string()});
           const Golfinho = type.parse(request.body);
+          const name = typeName.parse(request.params);
+
+          console.log('====================================');
+          console.log(name);
+          console.log('====================================');
+          console.log(Golfinho);
+          console.log('====================================');
 
           const updateGolfinho = await prisma.golfinho.update({
             where:{
-               name:Golfinho.name
+               name:name.name
             },
             data:{
                  name: Golfinho.name,

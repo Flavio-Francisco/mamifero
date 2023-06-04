@@ -15,11 +15,13 @@ export function Query(){
     
     const result =  await api.get('/get');
     setName(result.data);
-    
+   
     console.log(result.data);
     
- 
   }
+  useEffect(()=>{
+    queryGolfinho();
+  },[Card])
 
     return(
         <View style={style.conatiner}>
@@ -28,11 +30,6 @@ export function Query(){
            keyExtractor={item => item.name}
            renderItem={(item)=><Card item={item.item}/>}
            />
-           <TouchableOpacity
-            style={style.button}
-            onPress={queryGolfinho}
-            
-            ><Text style={style.text}>Atualizar</Text></TouchableOpacity>
         </View>
     );
 }
@@ -40,19 +37,13 @@ export function Query(){
 const style = StyleSheet.create({
     conatiner:{
         height:"100%",
-        marginTop:"20%",
+        backgroundColor:'#13293D',
         flex:1,
         alignItems:'center',
         
        
     },
-    button:{
-        backgroundColor:'#9999',
-        padding:20,
-        marginBottom:150,
-        borderRadius:10,
-        width:'50%',
-    },
+   
     text:{
         textAlign:'center',
         fontSize:20,

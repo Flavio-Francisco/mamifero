@@ -20,20 +20,17 @@ export function   QueryInd(){
             console.log(result.data);  
             setGolfinho(result.data) 
             console.log(golfinho);  
-            
+            setName('')
         } catch (error) {
             console.log(error);
             
         }
-       
-    
+      
     } 
-     
-
+    
 return(
     <View style={style.conatiner}>
 
-        
         <View style={style.conatiner}>
            <FlatList
            data={golfinho}
@@ -60,14 +57,15 @@ return(
 
 const style = StyleSheet.create({
     conatiner:{
-        height:"100%",
+        backgroundColor:'#13293D',
+        height:"80%",
         flex:1,
         alignItems:'center',
         justifyContent:'space-between',
         
     },
     button:{
-        backgroundColor:'#9999',
+        backgroundColor:'#006494',
         padding:20,
         marginBottom:150,
         borderRadius:10,
@@ -78,11 +76,13 @@ const style = StyleSheet.create({
         fontSize:20,
     },
     textInput:{
-        backgroundColor:'gray',
+        backgroundColor:'#e8F1F2',
         padding:20,
         marginBottom:35,
         borderRadius:10,
         width:'90%',
-        borderEndColor:'white'
+        borderEndColor:'white',
+        fontSize:20,
+        
     }
 })
