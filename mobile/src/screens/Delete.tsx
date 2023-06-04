@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { View,Text, TextInput,StyleSheet, TouchableOpacity, Alert } from "react-native";
 import { api } from "../services/axios";
 import { TypeGolfinho } from "../@types/TypeGolfinho";
@@ -8,33 +8,34 @@ import { TypeGolfinho } from "../@types/TypeGolfinho";
 
 export function Delete(){
 
-    const [name, setName] = useState('');
+    const [named, setName] = useState('');
 
   async function deleteGolfinho() {
-  
-   try {
     
-        await api.delete('/delete')
-        .then(response => {
-        console.log(response.data);
+     try {
+        console.log(named);
+        
+        const result = await api.delete('/delete',{
+           data:{
+            name: named
+           }
         })
-        .catch(error => {
+        Alert.alert('Golfinho deletado com sucesso!!!')
+        
+     } catch (error) {
         console.log(error);
-        });
-        } catch (error) {
-    console.log(error);
-    Alert.alert('algo deu Errado!')
-    
-    
-   }  
-
+        
+        
+     }
+        
+ 
   }
    
-
 return(
     <View style={style.conatiner}>
         <TextInput
         placeholder="Qual o golfinho você vai apagar?"
+        value={named}
         onChangeText={setName}
         />
         <TouchableOpacity

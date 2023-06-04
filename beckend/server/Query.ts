@@ -6,34 +6,31 @@ import { PrismaClient } from '@prisma/client';
 
 export default async function Query(server: FastifyInstance) {
     const prisma = new PrismaClient();
-    server.get('/query/:name',async (request,reply) => {
+    server.get('/query/:name',async (request) => {
 
         const type = z.object({
             name: z.string(),
         })
         
-        type type =z.infer<typeof type>;
+       
 
-        const nameGolfinho = type.parse(request.params);
-
-        const golfinho = await prisma.golfinho.findMany({
+        const {name} = type.parse(request.params);
+       console.log('====================================');
+       console.log(name);
+       console.log('====================================');
+        
+            
+        const golfinho = await prisma.golfinho.findUnique({
             where:{
-             AND:{
-                name:{
-                    contains:nameGolfinho.name,
-                }
-             }
-            },
-            select:{
-                id: true,
-                name: true,
-                species: true,
-                characteristics: true,
-                marine: true,
-            }
+                name:name
+             },
+            
         })
-
-       return reply.send (golfinho)
+        console.log(golfinho);
+       return {golfinho}
+      
         })
+        
+        
     
 }

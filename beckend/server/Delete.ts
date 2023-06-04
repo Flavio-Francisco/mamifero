@@ -12,11 +12,11 @@ const prisma = new PrismaClient();
             name: z.string(),
         })
 
-        const Golfinho = type.parse(request.body)
+        const{name} = type.parse(request.body)
 
         const deleteGolfinho = await prisma.golfinho.delete({
         where: {
-           name:Golfinho.name,
+           name:name,
         },
         select:{
             id: true,
@@ -26,7 +26,7 @@ const prisma = new PrismaClient();
             marine: true
         }
         })
-        return(` Golfinho com ID, ${deleteGolfinho} deletado com  sucesso`)
+        return(` Golfinho , ${deleteGolfinho} deletado com  sucesso`)
     })
 
 }

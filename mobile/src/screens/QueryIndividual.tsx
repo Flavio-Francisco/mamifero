@@ -10,36 +10,27 @@ import { TypeGolfinho } from "../@types/TypeGolfinho";
 
 
 export function   QueryInd(){
-
-    var [name, setName] = useState<TypeGolfinho[]>([] as TypeGolfinho[])
+    var [golfinho, setGolfinho] = useState<TypeGolfinho[]>([] as TypeGolfinho[])
     var[data, setData] = useState('')
-    
-
-   
     async function queryGolfinho() {
-        console.log(data);
-       await api.get('/query/',{
-          params:{
-              name:data
-          }
-      })
-      .then((response)=>{
-          console.log(response.data);
-          setName(response.data)
-          
-      })
-      .catch((erro)=>{
-        console.log(erro);
-        Alert.alert('algo deu errado!')
-
-      })
-        useEffect(()=>{
-    
-      queryGolfinho()
-      Card
-     } ,[])  
+        try {
+            console.log(data);
+            
+            const result =  await api.get('/query',{
+                params:{
+                    name:data
+                }
+            })
+            
+            setGolfinho(result.data) 
+            console.log(setGolfinho);
+        } catch (error) {
+            console.log(error);
+            
+        }
+    } 
      
-   }
+   
   
    
 
@@ -49,7 +40,7 @@ return(
         
         <View style={style.conatiner}>
            <FlatList
-           data={name}
+           data={golfinho}
            keyExtractor={item => item.name}
            renderItem={(item)=><Card item={item.item}/>}
            />  
@@ -78,7 +69,6 @@ const style = StyleSheet.create({
         alignItems:'center',
         justifyContent:'space-between',
         
-       
     },
     button:{
         backgroundColor:'#9999',
