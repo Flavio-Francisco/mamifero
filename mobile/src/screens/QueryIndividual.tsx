@@ -11,28 +11,24 @@ import { TypeGolfinho } from "../@types/TypeGolfinho";
 
 export function   QueryInd(){
     var [golfinho, setGolfinho] = useState<TypeGolfinho[]>([] as TypeGolfinho[])
-    var[data, setData] = useState('')
+    var[name, setName] = useState('')
     async function queryGolfinho() {
         try {
-            console.log(data);
+            console.log(name);
             
-            const result =  await api.get('/query',{
-                params:{
-                    name:data
-                }
-            })
-            
+            const result = await api.get(`/query/${name}`)
+            console.log(result.data);  
             setGolfinho(result.data) 
-            console.log(setGolfinho);
+            console.log(golfinho);  
+            
         } catch (error) {
             console.log(error);
             
         }
+       
+    
     } 
      
-   
-  
-   
 
 return(
     <View style={style.conatiner}>
@@ -49,8 +45,8 @@ return(
         <TextInput
          style={style.textInput}
          placeholder="digite o nome do golfinho"
-         value={data}
-         onChangeText={setData}
+         value={name}
+         onChangeText={setName}
          
         />
         <TouchableOpacity

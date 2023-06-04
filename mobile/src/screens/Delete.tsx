@@ -15,7 +15,7 @@ export function Delete(){
      try {
         console.log(named);
         
-        const result = await api.delete('/delete',{
+        await api.delete('/delete',{
            data:{
             name: named
            }
